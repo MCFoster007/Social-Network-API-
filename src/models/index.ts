@@ -1,5 +1,5 @@
-import User from './User.js';
-import Tag from './Thoughts.js';
-import Application from './Application.js';
+const User = require('./User');
+const Thought = require('./Thought');
 
-export { User, Application, Tag };
+module.exports = { User, Thought };
+
