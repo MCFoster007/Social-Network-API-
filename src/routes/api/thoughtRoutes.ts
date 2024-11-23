@@ -11,7 +11,7 @@ router.route('/')
   .get(getAllThoughts)
   .post(createThought);
 
-router.route('/:thoughtId') // Changed from :id to :thoughtId
+router.route('/:thoughtId') // use :thoughtId
   .get(getThoughtById)
   .put(updateThought)
   .delete(deleteThought);
