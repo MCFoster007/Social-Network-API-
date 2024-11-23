@@ -14,16 +14,16 @@ const userSchema = new Schema(
     
     username: {
       type: String,
-      require: true,
+      required: true,
      unique: true,
      trim: true,
     },
     email: {
       type: String,
-      require: true,
+      required: true,
      unique: true,
      match: [/.+@.+\..+/, 'Must match a valid email address!'],
-    }
+    },
       thoughts: [
         {
           type: Schema.Types.ObjectId,
@@ -39,23 +39,20 @@ const userSchema = new Schema(
       },
     
   {
-    // Mongoose supports two Schema options to transform Objects after querying MongoDb: toJSON and toObject.
- 
-    toJSON: {
-      virtuals: true,
-    },
     id: false,
+ 
   }
 );
 
 // Create a virtual property `friendcount` 
-userSchema
-  .virtual('friendCount').get(function () {
-    return this.friends.length;
-  });
+userSchema.virtual('friendCount').get(function () {
+  return this.friends.length;
+});
+
+userSchema.set('toJSON', {virtuals: true});
 // Initialize our User model
-const User =model('User', userSchema);
-module.exports = User;
+const User = model('User', userSchema);
+
 
   // Setter to set the first and last name
   // .set(function (v) {
