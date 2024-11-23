@@ -17,7 +17,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/socialNetworkDB', {
 });
 
 // api routes
-app.use('/api, require('./routes'));
+app.use('/api', require('./routes'));
 
 
   app.listen(PORT, () => {
