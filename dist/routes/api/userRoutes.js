@@ -1,8 +1,11 @@
-import { Router } from 'express';
-const router = Router();
-import { getUsers, getSingleUser, createUser } from '../../controllers/userController.js';
-// /api/users
-router.route('/').get(getUsers).post(createUser);
-// /api/users/:userId
-router.route('/:userId').get(getSingleUser);
-export default router;
+"use strict";
+const router = require('express').Router();
+const { getAllUsers, getUserById, createUser, updateUser, deleteUser } = require('../controllers/userController');
+router.route('/')
+    .get(getAllUsers)
+    .post(createUser);
+router.route('/:userId') // use id to :userId
+    .get(getUserById)
+    .put(updateUser)
+    .delete(deleteUser);
+module.exports = router;

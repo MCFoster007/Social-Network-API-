@@ -1,4 +1,4 @@
-import User from './User.js';
-import Tag from './Tag.js';
-import Application from './Application.js';
-export { User, Application, Tag };
+"use strict";
+const User = require('./User');
+const Thought = require('./Thought');
+module.exports = { User, Thought };

@@ -5,7 +5,7 @@ import apiRoutes from './api/index.js';
 router.use('/api', apiRoutes);
 
 router.use((_req, res) => {
-  return res.send('social network!');
+  return res.send('Wrong path!');
 });
 
 export default router;

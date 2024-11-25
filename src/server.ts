@@ -1,26 +1,21 @@
-import express from 'express';
-// import db from './config/connection.js';
-// import routes from './routes/index.js';
-import mongoose from 'mongoose';
-
-const PORT = 3001;
+const express = require('express');
 const app = express();
+const mongoose = require('mongoose');
+
+
+// Connect to MongoDB
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true})
+const db = mongoose.connection
+db.on('error', (error) => console.error)
+db.once('open', () => console.log('Connected to Database'))
+app.use(express.json())
+
+const userRouter = require('./routes/api/user')
+app.use('/users', userRouter)
+
+
+app.listen(3000, () => console.log(`Server running`))
 
 
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-// connect to mongo
-mongoose.connect('mongodb://127.0.0.1:27017/socialNetworkDB', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-// api routes
-app.use('/api', require('./routes'));
-
-
-  app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
 
