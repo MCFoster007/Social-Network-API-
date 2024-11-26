@@ -1,5 +1,4 @@
-// import { Schema, Types, Document, ObjectId } from 'mongoose';
-const { Schema, model, Types } = require('mongoose');
+import { Schema, Types, model } from 'mongoose';
 // Reaction schema (subdocument)
 const reactionSchema = new Schema({
     reactionId: {
@@ -18,13 +17,10 @@ const reactionSchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now,
-        get: (timestamp) => new Date(timestamp).toLocaleString(),
     },
 }, {
-    toJSON: {
-        getters: true,
-    },
-    id: false,
+    timestamps: true,
+    _id: false
 });
 const thoughtSchema = new Schema({
     thoughtText: {
@@ -36,7 +32,6 @@ const thoughtSchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now,
-        get: (timestamp) => new Date(timestamp).toLocaleString(),
     },
     username: {
         type: String,
@@ -44,11 +39,8 @@ const thoughtSchema = new Schema({
     },
     reactions: [reactionSchema],
 }, {
-    toJSON: {
-        virtuals: true,
-        getters: true,
-    },
-    id: false,
+    timestamps: true,
+    _id: false
 });
 // Virtual for reaction count
 thoughtSchema.virtual('reactionCount').get(function () {
