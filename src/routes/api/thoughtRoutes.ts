@@ -1,11 +1,12 @@
-const router = require('express').Router();
-const { 
+import { Router } from 'express';
+const router = Router();
+import { 
   getAllThoughts, 
   getThoughtById, 
   createThought, 
   updateThought, 
   deleteThought 
-} = require('../controllers/thoughtController');
+} from '../../controllers/thoughtController';
 
 router.route('/')
   .get(getAllThoughts)
@@ -16,4 +17,4 @@ router.route('/:thoughtId') // use :thoughtId
   .put(updateThought)
   .delete(deleteThought);
 
-module.exports = router;
+  export { router as thoughtRouter };

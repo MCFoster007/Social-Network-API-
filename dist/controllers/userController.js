@@ -1,6 +1,4 @@
-// import { User, Application } from '../models/index.js';
-// import { Request, Response } from 'express';
-const { User } = require('../models');
+import { User } from '../models/index.js';
 export const getUsers = async (_req, res) => {
     try {
         const users = await User.find();
@@ -51,4 +49,8 @@ export const deleteUser = async (req, res) => {
         res.status(500).json(err);
         return;
     }
+};
+export const addFriend = async (req, res) => {
+};
+export const removeFriend = async (req, res) => {
 };

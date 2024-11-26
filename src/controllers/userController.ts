@@ -1,6 +1,7 @@
-// import { User, Application } from '../models/index.js';
-// import { Request, Response } from 'express';
-const { User } = require('../models');
+import { User, Thoughts } from '../models/index.js';
+import { Request, Response } from 'express';
+
+
 
 
 
@@ -60,3 +61,10 @@ const { User } = require('../models');
     }
   }
 
+export const addFriend = async ( req: Request, res: Response)=> {
+
+}
+
+export const removeFriend = async ( req: Request, res: Response)=> {
+
+}

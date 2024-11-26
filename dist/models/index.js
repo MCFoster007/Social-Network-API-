@@ -1,4 +1,3 @@
-"use strict";
-const User = require('./User');
-const Thought = require('./Thought');
-module.exports = { User, Thought };
+import User from "./User";
+import Thoughts from "./Thoughts";
+export { User, Thoughts };

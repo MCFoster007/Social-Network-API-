@@ -1,13 +1,12 @@
-"use strict";
-const express = require('express');
+import express from 'express';
+import routes from './routes/index.js';
+import db from './config/connection.js';
+await db();
+const PORT = process.env.PORT || 3001;
 const app = express();
-const mongoose = require('mongoose');
-// Connect to MongoDB
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
-const db = mongoose.connection;
-db.on('error', (error) => console.error);
-db.once('open', () => console.log('Connected to Database'));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-const userRouter = require('./routes/api/user');
-app.use('/users', userRouter);
-app.listen(3000, () => console.log(`Server running`));
+app.use(routes);
+app.listen(PORT, () => {
+    console.log(`API server running on port ${PORT}!`);
+});

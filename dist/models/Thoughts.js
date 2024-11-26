@@ -1,4 +1,3 @@
-"use strict";
 // import { Schema, Types, Document, ObjectId } from 'mongoose';
 const { Schema, model, Types } = require('mongoose');
 // Reaction schema (subdocument)
@@ -56,4 +55,4 @@ thoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length;
 });
 const Thought = model('Thought', thoughtSchema);
-module.exports = Thought;
+export default Thought;
