@@ -37,6 +37,25 @@ export const getThoughtById = async (req: Request, res: Response) => {
   }
 };
 
+
+// * POST Thought/courses
+// * @param object username
+// * @returns a single Thoughtobject
+// */
+export const createThought= async (req: Request, res: Response) => {
+   const { course } = req.body;
+   try {
+     const newThought= await Thought.create({
+       course
+     });
+     res.status(201).json(newThought);
+   } catch (error: any) {
+     res.status(400).json({
+       message: error.message
+     });
+   }
+ };
+
 /**
 * PUT Thought based on id /thoughtRouters/:id
 * @param object id, username
