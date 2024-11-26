@@ -6,7 +6,7 @@ import {
   createThought, 
   updateThought, 
   deleteThought 
-} from '../../controllers/thoughtController';
+} from '../../controllers/thoughtController.js';
 
 router.route('/')
   .get(getAllThoughts)

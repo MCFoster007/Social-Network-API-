@@ -20,13 +20,14 @@ export const getAllThoughts = async (_req: Request, res: Response) => {
 //get by id
 export const getThoughtById = async (req: Request, res: Response) => {
   const { thoughtId } = req.params;
+  console.log(thoughtId);
   try {
-    const user = await Thought.findById(thoughtId);
+    const user = await Thought.findOne({ _id: thoughtId });
     if (user) {
       res.json(user);
     } else {
       res.status(404).json({
-        message: "Volunteer not found",
+        message: "Thought not found",
       });
     }
   } catch (error: any) {
@@ -95,7 +96,10 @@ export const deleteThought = async (req: Request, res: Response) => {
         message: "No thoughtRouter with that ID",
       });
     } else {
-      await User.deleteMany({ _id: { $in: thought.users } });
+      await User.findOneAndUpdate(
+        { userthoughts: req.params.thoughtRouterId },
+        { $pull: { userthoughts: req.params.thoughtRouterId } }
+      );
       res.json({ message: "Thought and users deleted!" });
     }
   } catch (error: any) {
