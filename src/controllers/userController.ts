@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 
 
 
-
+//GET USERS -TESTED AND WORKING
   
   export const getUsers = async (_req: Request, res: Response) => {
     try {
@@ -15,7 +15,7 @@ import { Request, Response } from 'express';
     }
   }
 
-  // Get a single user
+  // Get a single user-TEST AND WORKING
   export const getSingleUser = async (req: Request, res: Response) => {
     try {
       const user = await User.findOne({ _id: req.params.userId })
@@ -33,7 +33,7 @@ import { Request, Response } from 'express';
     }
   }
 
-  // create a new user
+  // create a new user-TESETD AND WORKS
   export const createUser = async (req: Request, res: Response) => {
     try {
       const user = await User.create(req.body);

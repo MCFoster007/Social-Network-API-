@@ -40,7 +40,6 @@ const thoughtSchema = new Schema({
     reactions: [reactionSchema],
 }, {
     timestamps: true,
-    _id: false
 });
 // Virtual for reaction count
 thoughtSchema.virtual('reactionCount').get(function () {

@@ -4,7 +4,8 @@ import { getAllThoughts, getThoughtById, createThought, updateThought, deleteTho
 router.route('/')
     .get(getAllThoughts)
     .post(createThought);
-router.route('/:thoughtId') // use :thoughtId
+// use :thoughtId
+router.route('/:thoughtId')
     .get(getThoughtById)
     .put(updateThought)
     .delete(deleteThought);

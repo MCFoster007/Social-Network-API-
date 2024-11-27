@@ -51,7 +51,7 @@ const thoughtSchema = new Schema(
   },
   {
     timestamps: true,
-    _id: false
+    
 }
 );
 

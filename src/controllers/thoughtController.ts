@@ -1,12 +1,12 @@
 import { Thoughts, User } from "../models/index.js";
 import { Request, Response } from "express";
-import Thought from "../models/Thoughts.js";
+
 // import { thoughtRoutes } from "../../routes/api/thoughtRoutes.js";
 
 // Function to get all of the applications by invoking the find() method
 
 // Get all thoughts
-
+//testing and working
 export const getAllThoughts = async (_req: Request, res: Response) => {
   try {
     const thoughts = await Thoughts.find();
@@ -17,12 +17,13 @@ export const getAllThoughts = async (_req: Request, res: Response) => {
     });
   }
 };
-//get by id
+//get by id.  testing and working
 export const getThoughtById = async (req: Request, res: Response) => {
-  const { thoughtId } = req.params;
-  console.log(thoughtId);
+  
+  
   try {
-    const user = await Thought.findOne({ _id: thoughtId });
+    const user = await Thoughts.findById(req.params.thoughtId );
+    console.log(user);
     if (user) {
       res.json(user);
     } else {
@@ -40,12 +41,12 @@ export const getThoughtById = async (req: Request, res: Response) => {
 // * POST Thought/courses
 // * @param object username
 // * @returns a single Thoughtobject
-// */
+// */tesint and working
 export const createThought = async (req: Request, res: Response) => {
-  const { course } = req.body;
+  const { username, thoughtText } = req.body;
   try {
-    const newThought = await Thought.create({
-      course,
+    const newThought = await Thoughts.create({
+      thoughtText: thoughtText, username: username,
     });
     res.status(201).json(newThought);
   } catch (error: any) {
@@ -59,10 +60,11 @@ export const createThought = async (req: Request, res: Response) => {
  * PUT Thought based on id /thoughtRouters/:id
  * @param object id, username
  * @returns a single Thought object
+ * /testing and working
  */
 export const updateThought = async (req: Request, res: Response) => {
   try {
-    const thought = await Thought.findOneAndUpdate(
+    const thought = await Thoughts.findOneAndUpdate(
       { _id: req.params.thoughtId },
       { $set: req.body },
       { runValidators: true, new: true }
@@ -83,11 +85,11 @@ export const updateThought = async (req: Request, res: Response) => {
 /**
  * DELETE Thought based on id /thoughtRouters/:id
  * @param string id
- * @returns string
+ * @returns string ******NOT WORKING*******
  */
 export const deleteThought = async (req: Request, res: Response) => {
   try {
-    const thought = await Thought.findOneAndDelete({
+    const thought = await Thoughts.findOneAndDelete({
       _id: req.params.thoughtRouterId,
     });
 

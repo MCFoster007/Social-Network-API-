@@ -1,5 +1,4 @@
 import { Thoughts, User } from "../models/index.js";
-import Thought from "../models/Thoughts.js";
 // import { thoughtRoutes } from "../../routes/api/thoughtRoutes.js";
 // Function to get all of the applications by invoking the find() method
 // Get all thoughts
@@ -16,10 +15,9 @@ export const getAllThoughts = async (_req, res) => {
 };
 //get by id
 export const getThoughtById = async (req, res) => {
-    const { thoughtId } = req.params;
-    console.log(thoughtId);
     try {
-        const user = await Thought.findOne({ _id: thoughtId });
+        const user = await Thoughts.findById(req.params.thoughtId);
+        console.log(user);
         if (user) {
             res.json(user);
         }
@@ -40,10 +38,10 @@ export const getThoughtById = async (req, res) => {
 // * @returns a single Thoughtobject
 // */
 export const createThought = async (req, res) => {
-    const { course } = req.body;
+    const { username, thoughtText } = req.body;
     try {
-        const newThought = await Thought.create({
-            course,
+        const newThought = await Thoughts.create({
+            thoughtText: thoughtText, username: username,
         });
         res.status(201).json(newThought);
     }
@@ -60,7 +58,7 @@ export const createThought = async (req, res) => {
  */
 export const updateThought = async (req, res) => {
     try {
-        const thought = await Thought.findOneAndUpdate({ _id: req.params.thoughtId }, { $set: req.body }, { runValidators: true, new: true });
+        const thought = await Thoughts.findOneAndUpdate({ _id: req.params.thoughtId }, { $set: req.body }, { runValidators: true, new: true });
         if (!thought) {
             res.status(404).json({ message: "No thoughtRouter with this id!" });
         }
@@ -79,7 +77,7 @@ export const updateThought = async (req, res) => {
  */
 export const deleteThought = async (req, res) => {
     try {
-        const thought = await Thought.findOneAndDelete({
+        const thought = await Thoughts.findOneAndDelete({
             _id: req.params.thoughtRouterId,
         });
         if (!thought) {
