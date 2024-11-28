@@ -43,7 +43,7 @@ import { Request, Response } from 'express';
     }
   }
 
-  // Delete a user and associated apps
+  // Delete a user and associated apps-TESTED AND KINDA WORKS
   export const deleteUser = async (req: Request, res: Response) => {
     try {
         const user = await User.findOneAndDelete({ _id: req.params.userId });
@@ -70,7 +70,7 @@ import { Request, Response } from 'express';
         return res.status(500).json(err);
     }
 }
-
+//tested works
 export const addFriend = async ( req: Request, res: Response)=> {
     console.log('You are adding a friend');
     console.log(req.body);
@@ -94,7 +94,7 @@ export const addFriend = async ( req: Request, res: Response)=> {
 }
 
 
-
+//teste and works
 export const removeFriend = async ( req: Request, res: Response)=> {
     try {
         const user = await User.findOneAndUpdate(
