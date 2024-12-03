@@ -1,5 +1,5 @@
 # Social-Network-API-
-# Kool-Kanban-
+
 
 <div align="center">
 
@@ -50,7 +50,7 @@ About App
 
 ## About The Project
 
-This project is a Kanban board application with a secure login system. Users authenticate via a login page using JSON Web Tokens (JWT), enabling secure access to manage tasks. The application ensures secure storage of JWTs for authenticated sessions, automatic redirection for unauthorized access, and session expiration after inactivity for enhanced security.
+This social network API allows you to manage users, thoughts, reactions, and friend lists. Upon starting the server, Mongoose models sync seamlessly with the MongoDB database, ensuring readiness for API interactions. Using tools like Insomnia, you can perform CRUD operations on users and thoughts, handle reactions, and manage friend connections with ease.
 
 [Walk-Thru](https://youtu.be/5veKaanRFRc)
 
